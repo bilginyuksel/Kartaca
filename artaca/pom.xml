@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bilginyuksel</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>artaca</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>agenda-logger</name>
-    <description>Agenda logger project for Spring Boot</description>
+    <name>artaca</name>
+    <description>Ageda project for Kartaca</description>
 
     <properties>
         <java.version>1.8</java.version>
