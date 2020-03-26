@@ -15,6 +15,8 @@ public class KafkaLoggerApplication {
 
     @KafkaListener(topics = "test", groupId = "group")
     public void listen(String message) throws IOException {
+	// Write class hieararcy here. and parse this string to that class.
+	// So you have to write a deserializer.
         System.out.println("Message : "+ message);
     }
 }
