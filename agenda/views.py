@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import Post, User
-from .serializers import AgendaSerializer
+from .models import Post, User, LogPost
+from .serializers import AgendaSerializer, AgendaLogSerializer
 from logpipe import Producer
 
 class AgendaViewSet(viewsets.ModelViewSet):
@@ -18,9 +18,16 @@ class AgendaViewSet(viewsets.ModelViewSet):
         travel agenda.
         """
         # Don't save an object to database here.
+        """
+        Commit changes here. I changed the data Post that we will send to KAFKA with LogPost.
+        And also i changed the serializer according to LogPost.
+        In this case i have to configure api details method and send the log data to kafka
+        on that method (API Post Details). 
+        """
         test = Post(note="new messageex", created_by = request.user)
-        producer = Producer('test', AgendaSerializer)
-        producer.send(test)
+        test2 = LogPost(post = test, viewed_by = request.user) # viewed_time will be automatically set.
+        producer = Producer('test', AgendaLogSerializer)
+        producer.send(test2)
         
 
         return super().list(request, *args, **kwargs)

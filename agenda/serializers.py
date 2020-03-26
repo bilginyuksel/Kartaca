@@ -1,10 +1,8 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Post, LogPost
 
 
-
-# Maybe HyperLinkedSerializer is better than ModelSerializer
-# i don't know now. But it can be.
+# Agenda serializer for API
 class AgendaSerializer(serializers.ModelSerializer):
     MESSAGE_TYPE = 'agenda'
     VERSION = 1
@@ -15,3 +13,13 @@ class AgendaSerializer(serializers.ModelSerializer):
         fields = ('id','note', 'place', 'created_by')
 
 
+# Agenda log serializer.
+# Serialize agenda logs and send via kafka.
+class AgendaLogSerializer(serializers.ModelSerializer):
+    MESSAGE_TYPE = 'agenda_log'
+    VERSION = 1
+    KEY_FIELD = 'id'
+
+    class Meta:
+        model = LogPost
+        fields = ('id', 'post', 'viewed_by', 'viewed_time')
