@@ -1,5 +1,7 @@
 django
 djangorestframework
 djangorestframework-jwt
+kafka-python
 django-logpipe
+corsheaders
 

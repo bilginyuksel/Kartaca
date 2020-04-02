@@ -21,12 +21,12 @@ public class KafkaLoggerApplication {
     }
 
 
-    @KafkaListener(topics = "test", groupId = "group")
+    @KafkaListener(topics = "kartaca_bilginyuksel", groupId = "group")
     public void listen(String message) throws IOException {
 	    // Write class hieararcy here. and parse this string to that class.
 	    // So you have to write a deserializer.
         AgendaLog agendaLog = serializer.deserialize(message);
-        if(fileService.isWritable("fileName")) fileService.write(agendaLog);
+        if(fileService.isWritable("fileName")) fileService.write("path", agendaLog);
 
         System.out.println("Message : "+ message);
     }

@@ -25,7 +25,7 @@ SECRET_KEY = 'a#o2^&u2*ucho-qudfl29n5q7$!xd5)(@^)n&q@#bs_#wi+-p#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,13 +41,15 @@ INSTALLED_APPS = [
     # Rest framework for Agenda API calls
     'rest_framework',
     # Logpipe for KAFKA messaging
-    'logpipe'
+    'logpipe',
+    'corsheaders'
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,7 +75,7 @@ LOGPIPE = {
     'CONSUMER_BACKEND': 'logpipe.backend.kafka.Consumer',
     'PRODUCER_BACKEND': 'logpipe.backend.kafka.Producer',
     'KAFKA_BOOTSTRAP_SERVERS': [
-        'localhost:9092'
+        'kafka:9092'
     ],
     'KAFKA_CONSUMER_KWARGS': {
         'group_id': 'django-logpipe',

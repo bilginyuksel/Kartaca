@@ -1,6 +1,13 @@
 from rest_framework import serializers
-from .models import Post, LogPost
+from .models import Post, LogPost, User
 
+
+class UserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        exclude = ('is_superuser', 'password', 'is_staff', 'is_active', 'groups',
+         'user_permissions', 'last_login', 'date_joined', 'id')
 
 # Agenda serializer for API
 class AgendaSerializer(serializers.ModelSerializer):
@@ -8,10 +15,11 @@ class AgendaSerializer(serializers.ModelSerializer):
     VERSION = 1
     KEY_FIELD = 'id'
 
+    created_by = UserSerializer()
+    
     class Meta:
         model = Post
         fields = ('id','note', 'place', 'created_by')
-
 
 # Agenda log serializer.
 # Serialize agenda logs and send via kafka.
@@ -19,6 +27,9 @@ class AgendaLogSerializer(serializers.ModelSerializer):
     MESSAGE_TYPE = 'agenda_log'
     VERSION = 1
     KEY_FIELD = 'id'
+
+    viewed_by = UserSerializer()
+    post = AgendaSerializer()
 
     class Meta:
         model = LogPost

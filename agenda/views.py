@@ -9,25 +9,19 @@ class AgendaViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = AgendaSerializer
 
+    def retrieve(self, request, pk = None):
+        """
+        Instead of viewing any post requested.
+        When any of these posts viewed send this viewed information to
+        logger spring-boot application via kafka.
+        """
 
+        viewed_post = Post.objects.get(pk = pk) # Viewed post
+        viewed_by = request.user # Viewed user
 
-    def list(self, request, *args, **kwargs):
-        """
-        use kafka operations here. 
-        By the way real operation should be when you look at the details of the
-        travel agenda.
-        """
-        # Don't save an object to database here.
-        """
-        Commit changes here. I changed the data Post that we will send to KAFKA with LogPost.
-        And also i changed the serializer according to LogPost.
-        In this case i have to configure api details method and send the log data to kafka
-        on that method (API Post Details). 
-        """
-        test = Post(note="new messageex", created_by = request.user)
-        test2 = LogPost(post = test, viewed_by = request.user) # viewed_time will be automatically set.
-        producer = Producer('test', AgendaLogSerializer)
-        producer.send(test2)
-        
+        kafka_log_post = LogPost(post = viewed_post, viewed_by = viewed_by)
+        kafka_producer = Producer('kartaca_bilginyuksel', AgendaLogSerializer)
+        kafka_producer.send(kafka_log_post)
 
-        return super().list(request, *args, **kwargs)
+        return super().retrieve(request, pk)
+
