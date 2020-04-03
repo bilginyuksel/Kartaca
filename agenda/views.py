@@ -20,8 +20,9 @@ class AgendaViewSet(viewsets.ModelViewSet):
         viewed_by = request.user # Viewed user
 
         kafka_log_post = LogPost(post = viewed_post, viewed_by = viewed_by)
-        kafka_producer = Producer('kartaca_bilginyuksel', AgendaLogSerializer)
+        kafka_producer = Producer('sarama_topic', AgendaLogSerializer)
         kafka_producer.send(kafka_log_post)
+        print(AgendaLogSerializer(kafka_log_post).data)
 
         return super().retrieve(request, pk)
 

@@ -1,9 +1,8 @@
 package com.bilginyuksel.kafkalogger;
 
-import com.bilginyuksel.kafkalogger.model.AgendaLog;
-import com.bilginyuksel.kafkalogger.serializer.IAgendaSerializer;
-import com.bilginyuksel.kafkalogger.service.IFileService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bilginyuksel.kafkalogger.model.KafkaLog;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -13,8 +12,6 @@ import java.io.IOException;
 @SpringBootApplication
 public class KafkaLoggerApplication {
 
-    @Autowired private IAgendaSerializer serializer;
-    @Autowired private IFileService fileService;
 
     public static void main(String[] args) {
         SpringApplication.run(KafkaLoggerApplication.class, args);
@@ -23,11 +20,13 @@ public class KafkaLoggerApplication {
 
     @KafkaListener(topics = "kartaca_bilginyuksel", groupId = "group")
     public void listen(String message) throws IOException {
-	    // Write class hieararcy here. and parse this string to that class.
-	    // So you have to write a deserializer.
-        AgendaLog agendaLog = serializer.deserialize(message);
-        if(fileService.isWritable("fileName")) fileService.write("path", agendaLog);
 
+        message = message.replace("json:","");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        KafkaLog aLog = objectMapper.readValue(message, KafkaLog.class);
         System.out.println("Message : "+ message);
+        System.out.println(aLog);
+
     }
 }

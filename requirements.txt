@@ -3,5 +3,5 @@ djangorestframework
 djangorestframework-jwt
 kafka-python
 django-logpipe
-corsheaders
+django-cors-headers
 

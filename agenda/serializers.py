@@ -19,7 +19,7 @@ class AgendaSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Post
-        fields = ('id','note', 'place', 'created_by')
+        fields = ('id','note', 'image_url', 'place', 'created_by', 'created_time')
 
 # Agenda log serializer.
 # Serialize agenda logs and send via kafka.
