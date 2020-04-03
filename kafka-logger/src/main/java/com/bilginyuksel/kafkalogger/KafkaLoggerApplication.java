@@ -18,14 +18,17 @@ public class KafkaLoggerApplication {
     }
 
 
-    @KafkaListener(topics = "kartaca_bilginyuksel", groupId = "group")
+    @KafkaListener(topics = "sarama_topic", groupId = "group")
     public void listen(String message) throws IOException {
 
         message = message.replace("json:","");
-
         ObjectMapper objectMapper = new ObjectMapper();
-        KafkaLog aLog = objectMapper.readValue(message, KafkaLog.class);
-        System.out.println("Message : "+ message);
+        KafkaLog aLog = null;
+        try {
+            aLog = objectMapper.readValue(message, KafkaLog.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         System.out.println(aLog);
 
     }
