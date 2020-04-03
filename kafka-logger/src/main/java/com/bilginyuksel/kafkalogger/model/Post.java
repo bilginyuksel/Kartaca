@@ -6,7 +6,7 @@ import java.util.Date;
 public class Post implements Serializable {
     private int id;
     private String note, place;
-    private String photo_url; // Maybe i don't need it
+    private String image_url; // Maybe i don't need it
     private User created_by;
     private Date created_time;
 
@@ -35,12 +35,12 @@ public class Post implements Serializable {
         this.place = place;
     }
 
-    public String getPhoto_url() {
-        return photo_url;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public void setPhoto_url(String photo_url) {
-        this.photo_url = photo_url;
+    public String getImage_url() {
+        return image_url;
     }
 
     public User getCreated_by() {
@@ -65,7 +65,7 @@ public class Post implements Serializable {
                 "id=" + id +
                 ", note='" + note + '\'' +
                 ", place='" + place + '\'' +
-                ", photo_url='" + photo_url + '\'' +
+                ", photo_url='" + image_url + '\'' +
                 ", created_by=" + created_by +
                 ", created_time=" + created_time +
                 '}';

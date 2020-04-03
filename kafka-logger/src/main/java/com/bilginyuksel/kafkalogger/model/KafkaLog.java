@@ -9,11 +9,13 @@ public class KafkaLog implements Serializable {
     private Integer version;
     private LogPost message;
 
-    class LogPost{
-        private int id;
-        private Post agenda_post;
+    public class LogPost{
+        private Integer id;
+        private Post post;
         private Date viewed_time;
         private User viewed_by;
+
+        public LogPost(){}
 
         public int getId() {
             return id;
@@ -23,12 +25,12 @@ public class KafkaLog implements Serializable {
             this.id = id;
         }
 
-        public Post getAgenda_post() {
-            return agenda_post;
+        public Post getPost() {
+            return post;
         }
 
-        public void setAgenda_post(Post agenda_post) {
-            this.agenda_post = agenda_post;
+        public void setId(Integer id) {
+            this.id = id;
         }
 
         public Date getViewed_time() {
@@ -51,7 +53,7 @@ public class KafkaLog implements Serializable {
         public String toString() {
             return "LogPost{" +
                     "id=" + id +
-                    ", agenda_post=" + agenda_post +
+                    ", agenda_post=" + post +
                     ", viewed_time=" + viewed_time +
                     ", viewed_by=" + viewed_by +
                     '}';
