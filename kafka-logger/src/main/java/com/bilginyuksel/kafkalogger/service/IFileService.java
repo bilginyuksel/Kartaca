@@ -2,8 +2,9 @@ package com.bilginyuksel.kafkalogger.service;
 
 import org.springframework.stereotype.Service;
 
-@Service
+import java.io.IOException;
+
 public interface IFileService {
-    boolean isWritable(String file);
-    void write(String path, Object context);
+    void writeObject(String path, Object object) throws IOException;
+    void writeString(String path, String message) throws IOException;
 }

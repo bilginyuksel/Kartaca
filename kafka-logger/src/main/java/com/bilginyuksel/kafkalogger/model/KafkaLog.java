@@ -9,7 +9,7 @@ public class KafkaLog implements Serializable {
     private Integer version;
     private LogPost message;
 
-    public class LogPost{
+    public class LogPost implements Serializable{
         private Integer id;
         private Post post;
         private Date viewed_time;
