@@ -24,22 +24,12 @@ public class KafkaLoggerApplication {
         message = message.replace("json:","");
         ObjectMapper objectMapper = new ObjectMapper();
         KafkaLog aLog = null;
-<<<<<<< HEAD
-	try{
-	    aLog = objectMapper.readValue(message, KafkaLog.class);
-	    System.out.println("Object :" + aLog );
-	}catch(Exception e){
-	    e.printStackTrace();
-	}
-        System.out.println("Message : "+ message);
-=======
         try {
             aLog = objectMapper.readValue(message, KafkaLog.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         System.out.println(aLog);
->>>>>>> 74956b22422203bdbe253e67462bb2879b37ce67
 
     }
 }
