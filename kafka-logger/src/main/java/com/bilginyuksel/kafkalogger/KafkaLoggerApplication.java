@@ -11,7 +11,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
 
+import java.nio.file.Paths;
 import java.io.IOException;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +21,7 @@ import java.util.logging.Logger;
 public class KafkaLoggerApplication {
 
 
-    @Autowired private IFileService fileService;
+    private IFileService fileService = new FileServiceImpl();
 
 
     public static void main(String[] args) {
@@ -30,6 +32,12 @@ public class KafkaLoggerApplication {
 
     @KafkaListener(topics = "sarama_topic", groupId = "group")
     public void listen(String message) throws IOException {
+	System.out.println("--------------------------------------");
+	System.out.println("--------------------------------------");
+	File f = new File(Paths.get("../../../../").toAbsolutePath().normalize().toString());
+	for(String s : f.list()) System.out.println(s);
+	System.out.println("--------------------------------------");
+	System.out.println("--------------------------------------");
         message = message.replace("json:","");
         ObjectMapper objectMapper = new ObjectMapper();
         KafkaLog aLog = null;
