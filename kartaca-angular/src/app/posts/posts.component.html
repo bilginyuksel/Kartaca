@@ -1,6 +1,6 @@
 <div class="card" *ngFor="let post of posts">
 <h2>{{post.title | uppercase}}</h2>
-<h5>{{post.place}}, Dec 7, 2017</h5>
+<h5>{{post.place}}, {{post.created_time}}</h5>
 <div class="fakeimg" style="height:200px;">Image</div>
 <p>{{post.note}}</p>
 <a href="/post/{{post.id}}">Read More</a>

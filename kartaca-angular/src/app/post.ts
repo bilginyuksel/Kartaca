@@ -3,7 +3,7 @@ export interface Post {
     title:string;
     place: string;
     note: string;
-    // imageUrl: string;
-    // createdTime: Date;
-    // createdBy: User;
+    image_url: string;
+    created_time: Date;
+    created_by: any;
 }

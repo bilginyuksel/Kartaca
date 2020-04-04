@@ -60,10 +60,11 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-		'rest_framework.permissions.IsAdminUser',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
@@ -87,23 +88,11 @@ LOGPIPE = {
     # 'DEFAULT_FORMAT': 'json',
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-    'access-control-allow-headers',
-]
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:8000', 'http://localhost:4200']
 
 ROOT_URLCONF = 'artaca.urls'
 
-TEMPLATES = [
+TEMPLATES =
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
