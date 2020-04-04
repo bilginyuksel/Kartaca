@@ -9,7 +9,6 @@ public class FileServiceImpl implements IFileService {
 
     private final static String baseFilePath = "";
 
-
     // Creates file if it is not exists.
     public boolean createFileIfNotExists(String path) throws IOException {
         File file = new File(baseFilePath + path);

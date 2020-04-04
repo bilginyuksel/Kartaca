@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class Post(models.Model):
 
+    title = models.CharField(max_length=255, blank=True, null=True)
     note = models.TextField(null = True, blank = True)
     place = models.CharField(max_length=200, null=True, blank=True)
     image_url = models.CharField(max_length=200, null=True, blank=True)

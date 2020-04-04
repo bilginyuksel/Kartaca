@@ -29,6 +29,10 @@ public class KafkaLog implements Serializable {
             return post;
         }
 
+        public void setPost(Post post) {
+            this.post = post;
+        }
+
         public void setId(Integer id) {
             this.id = id;
         }
