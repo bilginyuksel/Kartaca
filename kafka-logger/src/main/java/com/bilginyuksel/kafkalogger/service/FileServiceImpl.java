@@ -7,7 +7,7 @@ import java.io.*;
 @Service
 public class FileServiceImpl implements IFileService {
 
-    private final static String baseFilePath = "log\\";
+    private final static String baseFilePath = "";
 
 
     // Creates file if it is not exists.
