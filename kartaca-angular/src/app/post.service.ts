@@ -21,8 +21,7 @@ export class PostService {
 
   createPost(params): Observable<any> {
 
-    let par = {headers: this.header.headers, param:params};
-    return this.httpClient.post<any>('http://localhost:8000/api/agenda/',par);
+    return this.httpClient.post<any>('http://localhost:8000/api/agenda/',params,this.header);
   }
     
   getPosts() : Observable<Post[]> {

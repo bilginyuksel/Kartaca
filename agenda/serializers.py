@@ -15,7 +15,6 @@ class AgendaSerializer(serializers.ModelSerializer):
     VERSION = 1
     KEY_FIELD = 'id'
 
-    created_by = UserSerializer()
     
     class Meta:
         model = Post

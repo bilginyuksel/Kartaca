@@ -1,25 +1,13 @@
-<form action="">
-    <h3>Publish your travel with the others!</h3>
-    <table>
-        <tr>
-            <td><label for="title">Title: </label></td>
-            <td><input [(ngModel)]="title" size="90%" type="title"></td>
-        </tr>
-        <tr>
-            <td><label for="place">Place: </label></td>
-            <td><input [(ngModel)]="place" size="90%" type="place"></td>
-        </tr>
-        <tr>
-            <td><label for="note">Note: </label></td>
-            <td><textarea [(ngModel)]="note" name="" id="" cols="90%" rows="5"></textarea></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button (click)= "publish()" type="submit">Publish</button></td>
-        </tr>
-        <tr>
-            {{message}}
-        </tr>
-    </table>
+<h3>Publish your travel with the others!</h3>
+<label for="title">Title: </label>
+<input [(ngModel)]="p_title" size="90%" type="title">
+<br>
+<label for="place">Place: </label>
+<input [(ngModel)]="p_place" size="90%" type="place">
+<br>
+<label for="note">Note: </label>
+<textarea [(ngModel)]="p_note" name="" id="" cols="90%" rows="5"></textarea>
+<br>
+<button (click)= "publish()" type="submit">Publish</button>
+{{message}}
    
-</form>

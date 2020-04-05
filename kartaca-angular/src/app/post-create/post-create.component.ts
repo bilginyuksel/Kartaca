@@ -16,13 +16,14 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  title: string;
-  place: string;
-  note: string;
+  p_title: string;
+  p_place: string;
+  p_note: string;
   message: string;
 
   publish() : void {
-    var params = {'title':this.title, 'place':this.place, 'note':this.note};
+    var params = {'title':this.p_title, 'place':this.p_place, 'note':this.p_note, 'created_by':Number.parseInt(localStorage.getItem('id'))};
+    console.log(params);
     this.postService.createPost(params)
       .subscribe(any => {
         console.log(any);
