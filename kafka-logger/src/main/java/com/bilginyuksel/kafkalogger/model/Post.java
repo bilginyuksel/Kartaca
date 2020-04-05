@@ -7,7 +7,7 @@ public class Post implements Serializable {
     private int id;
     private String title, note, place;
     private String image_url; // Maybe i don't need it
-    private User created_by;
+    private int created_by;
     private Date created_time;
 
 
@@ -51,11 +51,11 @@ public class Post implements Serializable {
         return image_url;
     }
 
-    public User getCreated_by() {
+    public int getCreated_by() {
         return created_by;
     }
 
-    public void setCreated_by(User created_by) {
+    public void setCreated_by(int created_by) {
         this.created_by = created_by;
     }
 

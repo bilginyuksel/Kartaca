@@ -4,4 +4,4 @@ djangorestframework-jwt
 kafka-python
 django-logpipe
 django-cors-headers
-
+psycopg2

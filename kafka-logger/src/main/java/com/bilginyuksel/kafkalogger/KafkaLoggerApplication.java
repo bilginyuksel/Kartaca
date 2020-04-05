@@ -30,7 +30,7 @@ public class KafkaLoggerApplication {
 
 
 
-    @KafkaListener(topics = "kartaca_yuksel", groupId = "group")
+    @KafkaListener(topics = "sarama_topic", groupId = "group")
     public void listen(String message) throws IOException {
 	System.out.println("--------------------------------------");
 	System.out.println("--------------------------------------");
