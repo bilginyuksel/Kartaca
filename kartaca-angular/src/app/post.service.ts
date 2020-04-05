@@ -19,10 +19,10 @@ export class PostService {
   header = {headers: new HttpHeaders().set('Authorization','JWT '+ localStorage.getItem('token'))};
 
 
-  createPost(params): void {
+  createPost(params): Observable<any> {
 
-    let par = {headers: this.header, param:params};
-    this.httpClient.post<any>('http://localhost:8000/api/agenda',par);
+    let par = {headers: this.header.headers, param:params};
+    return this.httpClient.post<any>('http://localhost:8000/api/agenda/',par);
   }
     
   getPosts() : Observable<Post[]> {

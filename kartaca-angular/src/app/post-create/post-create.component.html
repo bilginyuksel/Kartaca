@@ -3,19 +3,22 @@
     <table>
         <tr>
             <td><label for="title">Title: </label></td>
-            <td><input size="100px" type="title"></td>
+            <td><input [(ngModel)]="title" size="90%" type="title"></td>
         </tr>
         <tr>
             <td><label for="place">Place: </label></td>
-            <td><input size="100px" type="place"></td>
+            <td><input [(ngModel)]="place" size="90%" type="place"></td>
         </tr>
         <tr>
             <td><label for="note">Note: </label></td>
-            <td><textarea name="" id="" cols="93" rows="5"></textarea></td>
+            <td><textarea [(ngModel)]="note" name="" id="" cols="90%" rows="5"></textarea></td>
         </tr>
         <tr>
             <td></td>
-            <td><button type="submit">Publish</button></td>
+            <td><button (click)= "publish()" type="submit">Publish</button></td>
+        </tr>
+        <tr>
+            {{message}}
         </tr>
     </table>
    

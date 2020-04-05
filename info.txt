@@ -1,0 +1,3 @@
+Do not forget to change kafka topic... (Spring boot and Django)
+Do not forget to change database Sqlite to postgresql or MySQL.
+You can check volume configurations and try to understand JWT refresh token.
