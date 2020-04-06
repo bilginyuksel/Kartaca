@@ -29,7 +29,7 @@ FROM openjdk:8-jre-alpine
 
 ARG DEPENDENCY=/app/target/dependency
 
-RUN pwd
+
 # Copy project dependencies from the build stage
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
