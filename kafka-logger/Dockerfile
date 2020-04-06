@@ -31,9 +31,10 @@ ARG DEPENDENCY=/app/target/dependency
 
 RUN pwd
 # Copy project dependencies from the build stage
-COPY kafka-logger/ ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY kafka-logger/ ${DEPENDENCY}/META-INF /app/META-INF
-COPY kafka-logger/ ${DEPENDENCY}/BOOT-INF/classes /app
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+
 
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.bilginyuksel.kafkalogger.KafkaLoggerApplication"]
 
