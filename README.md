@@ -21,6 +21,8 @@ Projedeki tüm servisler çalıştığı zaman proje kullanılabilir olacaktır.
 
 <br>
 <strong>Proje konfigürasyonları bittiği zaman favori tarayıcınızdan localhost:4200 adresine giderek sitenin login sayfasına erişmiş olursunuz. Ardından aşağıdaki kullanıcı bilgilerinden herhangi birisi ile sisteme giriş yapabilirsiniz. Aynı zamanda aktivitelerinizi docker CLI'daki loglardan takip edebilirsiniz.</strong>
+<br>
+Not: Proje için veriler agenda/migrations/0010.... dosyasında ilklenmiştir.
 
 <br>
 Projede statik olarak oluşturulmuş userlar kullanılmaktadır. 
