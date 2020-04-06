@@ -11,7 +11,7 @@ Zookeeper ve Kafka serverları açılmıştır. 'sarama_topic' adlı bir topic �
 Angular ile oluşturulan front end projesi django REST apilerini kullanarak veri akışını sağlamaktadır. 
 <br>
 <h4>Çalıştırmak için</h4>
-Linux makinenizde docker ve docker-compose yüklü olmalıdır. <br>
+Linux makinenizde docker ve docker-compose yüklü olmalıdır. Yüklüyse aşağıdaki komut proje kök dizininde yazılarak çalıştırılabilir. <br>
 
 ```terminal
 >> sudo docker-compose up
