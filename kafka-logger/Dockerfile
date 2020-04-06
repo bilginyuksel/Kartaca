@@ -1,4 +1,5 @@
 #### Stage 1: Build the application
+FROM openjdk:8-jdk-alpine
 FROM openjdk:8-jdk-alpine as build
 
 # Set the current working directory inside the image
@@ -28,10 +29,11 @@ FROM openjdk:8-jre-alpine
 
 ARG DEPENDENCY=/app/target/dependency
 
+RUN pwd
 # Copy project dependencies from the build stage
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+COPY kafka-logger/ ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY kafka-logger/ ${DEPENDENCY}/META-INF /app/META-INF
+COPY kafka-logger/ ${DEPENDENCY}/BOOT-INF/classes /app
 
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.bilginyuksel.kafkalogger.KafkaLoggerApplication"]
 
